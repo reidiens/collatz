@@ -3,7 +3,7 @@
 
 The collatz conjecture is a very popular problem in mathematics, for it's a simple premise, yet no one has been able to prove it.
 
-The collatz conjecture states that any number n will eventually reach 1 when operated upon under specific rules. If n is even, then simply divide it by 2. If n is odd, then multiply it by 3 and add 1. As you keep repeating that for the resulting values of n, you will find that they all eventually reach 1.
+The collatz conjecture states that any number n will eventually reach 1 when operated upon under specific rules. If n is even, then simply divide it by 2. If n is odd, then multiply it by 3 and add 1. As you keep repeating that for the resulting values of n, you will find that all values of n will eventually reach 1 when iterated upon enough.
 
 This program counts how many times n must be iterated upon in order to reach 1, and also measures how long it takes, just for funsies :)
 

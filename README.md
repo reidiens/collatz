@@ -9,7 +9,7 @@ This program counts how many times n must be iterated upon in order to reach 1, 
 
 ### Installing
 
-You could run this on any operating system, but I wrote it with Linux in mind, so Windows and Mac users might have to get creative when building the source (tho it really isnt much lol)
+You could run this on any operating system, but I wrote it with Linux in mind, so Windows and Mac users might have to get creative when building the source (tho it really shouldn't be hard this is a small program)
 
 #### Download
 
@@ -23,4 +23,4 @@ Now just type `make` and you're set.
 
 ### Usage
 
-It's not that hard to figure out. You can type the number you wish to iterate upon as an argument to the command to save time. If no argument is provided, it simply prompts the user to input one. Negative numbers wrap around to the maximum value for a long integer (whatever that is on your machine). Zero is not a valid input.
+It's not that hard to figure out. You can type the number you wish to iterate upon as an argument to the command to save time. If no argument is provided, it simply prompts the user to input one. Negative numbers wrap around the values for a long integer (whatever that may be on your machine). Zero is not a valid input.

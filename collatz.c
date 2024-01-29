@@ -17,10 +17,10 @@
 #include <time.h>
 #include <errno.h>
 
-unsigned char ulget(unsigned long *num);            // get the user input (ulget = unsigned long get)
-void collatz(unsigned long num, FILE *stream);      // do the conjecture & print it
-unsigned char savequery();                          // process whether the user wants to output to file
-unsigned char savedata(unsigned long num);          // output to file
+unsigned char ulget(unsigned long *num);                    // get the user input (ulget = unsigned long get)
+void collatz(unsigned long num, FILE *stream);              // do the conjecture & print it
+unsigned char savequery();                                  // process whether the user wants to output to file
+unsigned char savedata(unsigned long num);                  // output to file
 unsigned char checkargs(char *argv[], unsigned long *num);  // check the command line arguments
 
 int main(int argc, char *argv[]) {

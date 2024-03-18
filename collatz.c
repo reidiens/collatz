@@ -1,7 +1,7 @@
 /*
     Collatz Conjecture Automator
     Ruben Toledo
-    1/29/2024
+    3/18/2024
     
     Find how many iterations it takes for a number to reach 1
     when the Collatz conjecture is applied

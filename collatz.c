@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     if (!checkargs(argv, &num)) {
         puts("input the starting value:");
         while (!ulget(&num))
-            puts("try again. hint: it has to be a positive, non-zero integer");
+            puts("\ntry again.\nhint: it has to be a positive, non-zero integer");
     }
 
     arr_t a = collatz(num);

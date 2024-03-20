@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <errno.h>
+#include <errno.h>
 #include <time.h>
 
 typedef struct Array {
@@ -29,6 +29,9 @@ unsigned long checkargs(char *argv[], unsigned long *num);
 unsigned char ulget(unsigned long *num);
 int sixtypercent(int num);
 arr_t collatz(unsigned long num);
+unsigned char SaveToFile();
+char* getFname();
+unsigned char WriteFile(FILE *fp, arr_t a);
 
 int main(int argc, char *argv[]) {
     unsigned long num;
@@ -48,6 +51,39 @@ int main(int argc, char *argv[]) {
     printf("\nthe number %lu takes %d iterations to reach 1.\n", a.arr[0], a.size - 1);
     printf("it took a total of %f milliseconds to finish calulations\n", a.elapsed_ms);
 
+    puts("\nwrite to file? (y/n)");
+    if (!SaveToFile()) return 0;
+
+    puts("\nwhat do you wish to name the file?");
+    puts("hit enter for default name (collatz-out)");
+
+    char fname[32];
+    fgets(fname, sizeof(fname), stdin);
+    fname[strlen(fname) - 1] = '\0';
+
+    if (strlen(fname) < 1)
+        memccpy(fname, "collatz-out", 0, strlen("collatz-out"));
+    
+    puts("\ncreating file...");
+    FILE *fp = fopen(fname, "w");
+    if (fp == NULL) {
+        fprintf(stderr, "couldn't open file :(\n");
+        perror(strerror(errno));
+        return errno;
+    }
+
+    if (!WriteFile(fp, a)) {
+        fprintf(stderr, "could not write file :(\n");
+        return -1;
+    }
+
+    if (fclose(fp) == EOF) {
+        fprintf(stderr, "Could not close file (could not flush buffer)\n");
+        perror(strerror(errno));
+        return errno;
+    }
+
+    printf("file %s created!\n", fname);
     return 0;
 }
 
@@ -122,4 +158,30 @@ arr_t collatz(unsigned long num) {
     a.arr = realloc(a.arr, a.cap * sizeof(unsigned long));
 
     return a;
+}
+
+unsigned char SaveToFile() {
+    char temp[8];
+    fgets(temp, sizeof(temp), stdin);
+
+    if (strlen(temp) < 1) return 0;
+
+    if (temp[0] == 'y' || temp[0] == 'Y') return 1;
+    return 0;
+}
+
+unsigned char WriteFile(FILE *fp, arr_t a) {
+    if (fprintf(fp, "original number: %lu\n", a.arr[0]) < 0)
+        return 0;
+
+    for (int i = 0; i < a.size; i++)
+        if (fprintf(fp, "%lu\n", a.arr[i]) < 0)
+            return 0;
+
+    if (fprintf(fp, "total iterations: %d\n", a.size - 1) < 0)
+        return 0;
+    if (fprintf(fp, "calculation time: %f ms\n", a.elapsed_ms) < 0)
+        return 0;
+
+    return 1;
 }

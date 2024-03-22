@@ -69,18 +69,18 @@ int main(int argc, char *argv[]) {
     if (fp == NULL) {
         fprintf(stderr, "couldn't open file :(\n");
         perror(strerror(errno));
-        return errno;
+        return -1;
     }
 
     if (!WriteFile(fp, a)) {
         fprintf(stderr, "could not write file :(\n");
-        return -1;
+        return -2;
     }
 
     if (fclose(fp) == EOF) {
         fprintf(stderr, "Could not close file (could not flush buffer)\n");
         perror(strerror(errno));
-        return errno;
+        return -3;
     }
 
     printf("file %s created!\n", fname);

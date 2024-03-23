@@ -23,4 +23,4 @@ Now just type `make` and you're set.
 
 ### Usage
 
-It's not that hard to figure out. You can type the number you wish to iterate upon as an argument to the command to save time. If no argument is provided, it simply prompts the user to input one. Negative numbers wrap around the values for a long integer (whatever that may be on your machine). Zero is not a valid input.
+It's super simple. Just type the number you want iterated as an argument to the command or type it in when asked. Negative numbers wrap around the values for a long integer (whatever that may be on your machine). Zero is not a valid input.
